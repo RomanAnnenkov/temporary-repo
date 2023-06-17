@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class FileLogger implements Logger {
     String fileName;
-    DateTimeFormatter fileNameDate = DateTimeFormatter.ofPattern("dd-MM-yyyy" );
+    DateTimeFormatter fileNameDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public FileLogger() {
         this.fileName = fileNameDate + ".log";
@@ -17,10 +17,11 @@ public class FileLogger implements Logger {
     public FileLogger(String fileName) {
         this.fileName = fileName;
     }
+
     @Override
     public void log(String str) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss " );
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss ");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             writer.write(LocalDateTime.now().format(formatter) + str);
         } catch (IOException e) {
             throw new RuntimeException(e);
