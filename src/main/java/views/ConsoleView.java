@@ -2,21 +2,22 @@ package views;
 
 import model.CanCalculate;
 import model.CanCalculateFactory;
+import model.ICanCalculateFactory;
 
 import java.util.Scanner;
 
 public class ConsoleView {
     private final Scanner scanner = new Scanner(System.in);
 
-    private final CanCalculateFactory canCalculateFactory;
+    private final ICanCalculateFactory iCanCalculateFactory;
 
-    public ConsoleView(CanCalculateFactory canCalculateFactory) {
-        this.canCalculateFactory = canCalculateFactory;
+    public ConsoleView(ICanCalculateFactory iCanCalculateFactory) {
+        this.iCanCalculateFactory = iCanCalculateFactory;
     }
 
     public void run() {
         System.out.println("Калькулятор комплексных чисел.");
-        CanCalculate canCalculate = canCalculateFactory.create(getArgument());
+        CanCalculate canCalculate = iCanCalculateFactory.create(getArgument());
         while (true) {
             System.out.print("Операция (+,*,/,=) : ");
             String input = scanner.nextLine().toLowerCase();
@@ -37,7 +38,7 @@ public class ConsoleView {
                     if (nextCircle.equals("n")) {
                         return;
                     } else {
-                        canCalculate = canCalculateFactory.create(getArgument());
+                        canCalculate = iCanCalculateFactory.create(getArgument());
                     }
                     break;
                 default:

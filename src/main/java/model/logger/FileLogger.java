@@ -11,7 +11,7 @@ public class FileLogger implements Logger {
     DateTimeFormatter fileNameDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public FileLogger() {
-        this.fileName = fileNameDate + ".log";
+        this.fileName = LocalDateTime.now().format(fileNameDate) + ".log";
     }
 
     public FileLogger(String fileName) {
