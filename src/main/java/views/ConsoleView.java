@@ -1,8 +1,8 @@
 package views;
 
-import model.CanCalculate;
-import model.CanCalculateFactory;
-import model.ICanCalculateFactory;
+import model.calculator.CanCalculate;
+import model.ComplexNumber;
+import model.calculator.ICanCalculateFactory;
 
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class ConsoleView {
         System.out.println("Калькулятор комплексных чисел.");
         CanCalculate canCalculate = iCanCalculateFactory.create(getArgument());
         while (true) {
-            System.out.print("Операция (+,*,/,=) : ");
+            System.out.print("Операция (+,*,-,/,=) : ");
             String input = scanner.nextLine().toLowerCase();
             switch (input) {
                 case "+":
@@ -27,6 +27,9 @@ public class ConsoleView {
                     break;
                 case "*":
                     canCalculate.multiply(getArgument());
+                    break;
+                case "-":
+                    canCalculate.subtract(getArgument());
                     break;
                 case "/":
                     canCalculate.divide(getArgument());
@@ -47,13 +50,16 @@ public class ConsoleView {
         }
     }
 
-    private int getArgument() {
-        System.out.print("Введите число: ");
+    private ComplexNumber getArgument() {
+        System.out.print("Введите комплексное число: ");
         String input = scanner.nextLine();
-        while (!input.matches("^[\\d]+$")) {
-            System.out.print(input + " - не число, введите число: ");
+        while (!input.matches("^[\\d]+\\+[\\d]+[i]$")) {
+            System.out.print(input + " - не комплексное число, введите комплексное число: ");
             input = scanner.nextLine();
         }
-        return Integer.parseInt(input);
+        String[] arrayStr = input.split("\\+");
+        String a = arrayStr[0];
+        String b = arrayStr[1].split("[i]")[0];
+        return new ComplexNumber(Integer.parseInt(a), Integer.parseInt(b));
     }
 }

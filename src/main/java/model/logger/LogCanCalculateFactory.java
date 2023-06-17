@@ -1,7 +1,8 @@
 package model.logger;
 
-import model.CanCalculate;
-import model.ICanCalculateFactory;
+import model.calculator.CanCalculate;
+import model.ComplexNumber;
+import model.calculator.ICanCalculateFactory;
 
 public class LogCanCalculateFactory implements ICanCalculateFactory {
 
@@ -12,7 +13,7 @@ public class LogCanCalculateFactory implements ICanCalculateFactory {
     }
 
     @Override
-    public CanCalculate create(int arg) {
+    public CanCalculate create(ComplexNumber arg) {
         return new LogCalculator(arg, logger);
     }
 }
