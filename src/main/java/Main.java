@@ -1,5 +1,4 @@
 
-import model.CanCalculateFactory;
 import model.logger.FileLogger;
 import model.logger.LogCanCalculateFactory;
 import model.logger.Logger;
