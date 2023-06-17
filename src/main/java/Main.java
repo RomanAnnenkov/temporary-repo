@@ -1,5 +1,10 @@
+
+import model.CanCalculateFactory;
+import views.ConsoleView;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("calculator");
+        ConsoleView consoleView = new ConsoleView(new CanCalculateFactory());
+        consoleView.run();
     }
 }
