@@ -1,6 +1,7 @@
 package model.logger;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ public class FileLogger implements Logger {
     DateTimeFormatter fileNameDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public FileLogger() {
-        this.fileName = LocalDateTime.now().format(fileNameDate) + ".log";
+        this.fileName = "logs" + File.separator + LocalDateTime.now().format(fileNameDate) + ".log";
     }
 
     public FileLogger(String fileName) {
