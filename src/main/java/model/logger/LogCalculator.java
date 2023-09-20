@@ -6,8 +6,8 @@ import model.ComplexNumber;
 
 public class LogCalculator implements CanCalculate {
 
-    Calculator calculator;
-    Logger logger;
+    private final Calculator calculator;
+    private final Logger logger;
 
     public LogCalculator(ComplexNumber arg, Logger logger) {
         this.calculator = new Calculator(arg);
